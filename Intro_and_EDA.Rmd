@@ -116,3 +116,14 @@ I want to put together some initial questions to answer using my Shiny app.
 * Given a particular commodity, where can I sell it and at what price?
 * How do the buying and selling price compare the the galatic average (and 
 reported average average and median)?
+
+## Stations 
+
+```{r}
+stations <- as_tibble(jsonlite::fromJSON("data/stations.json"))
+```
+
+```{r}
+head(stations)
+```
+
