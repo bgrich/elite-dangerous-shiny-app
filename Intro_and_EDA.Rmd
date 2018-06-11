@@ -51,4 +51,38 @@ The columns for the `listings` are:
 * demand_bracket: Unsure of purpose
 * collected_at: Time the data was collected
 
+We can then look at a summary of the data to get an idea of what is in the 
+data set.
 
+```{r}
+summary(listings)
+```
+
+From the summary, we can see that there are number of NA's in the `supply_bracket` 
+and `demand_backet` columns. Since we don't know what those do, we can ignore 
+those for the time being. Additionally, there are zeroes in the `sell_price` 
+and `buy_price` columns. Those are essentially NA's as a `sell_price` of 0 means 
+that you can't sell the product there and a `buy_price` of 0 means there are 
+none available at that station.
+
+```{r}
+listings %>% 
+  filter(commodity_id == 1) %>% 
+  select(buy_price, sell_price) %>% 
+  gather(type, price) %>% 
+  filter(price > 0) %>% 
+  group_by(type) %>% 
+  mutate(average = mean(price), median = median(price)) %>% 
+  ggplot(aes(x = price, fill = type)) +
+  geom_histogram(bins = 100) +
+  facet_grid(type ~.) +
+  geom_vline(aes(xintercept = average)) +
+  geom_vline(aes(xintercept = median), linetype = "dotted")
+```
+
+This figure gives a quick histogram of the buy and sell prices of a single 
+commodity across all available stations. Note that it filters out any buy or 
+sell prices of 0. The solid line is the mean of the distribution and the dotted 
+line is the median of the distribution. From the figure, an interesting topic 
+to investigate is looking at comparative buy and sell prices across stations 
+to create a system to search for the max difference.
