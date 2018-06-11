@@ -1,0 +1,2 @@
+data/listings.csv filter=lfs diff=lfs merge=lfs -text
+data/stations.json filter=lfs diff=lfs merge=lfs -text
