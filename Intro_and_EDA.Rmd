@@ -86,3 +86,26 @@ sell prices of 0. The solid line is the mean of the distribution and the dotted
 line is the median of the distribution. From the figure, an interesting topic 
 to investigate is looking at comparative buy and sell prices across stations 
 to create a system to search for the max difference.
+
+```{r}
+listings %>% 
+  filter(station_id == 12) %>% 
+  select(buy_price, sell_price) %>% 
+  gather(type, price) %>% 
+  filter(price > 0) %>% 
+  group_by(type) %>% 
+  mutate(average = mean(price), median = median(price)) %>% 
+  ggplot(aes(x = price, fill = type)) +
+  geom_histogram(bins = 20) +
+  facet_grid(type ~.) +
+  geom_vline(aes(xintercept = average)) +
+  geom_vline(aes(xintercept = median), linetype = "dotted")
+```
+
+This figure looks at a histogram of buy and sell prices for a specific station 
+(across all available commodities). Again, the solid line is the mean and the 
+dotted line is the median.
+
+### Questions 
+
+
