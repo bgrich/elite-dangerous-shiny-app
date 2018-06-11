@@ -25,3 +25,30 @@ prototypes for the information I will want to display in the Shiny app.
 library(tidyverse)
 ```
 
+## Prices
+
+The `listings.csv` file gives a read out of the prices of goods at the time 
+the file was updated.
+
+```{r, message = FALSE}
+listings <- read_csv("data/listings.csv", progress = FALSE)
+```
+
+```{r}
+listings
+```
+
+The columns for the `listings` are:
+
+* id: The id of the particular good
+* station_id: The station where the good is being sold
+* commodity_id: The good being sold (related to commodities.json)
+* supply: How much of the item is available for purchase
+* supply_bracket: Unsure of purpose
+* buy_price: Price the good can be bought at 
+* sell_price: Price the good can be sold at
+* demand: How many items the station wants
+* demand_bracket: Unsure of purpose
+* collected_at: Time the data was collected
+
+
