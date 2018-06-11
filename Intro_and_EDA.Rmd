@@ -35,7 +35,7 @@ listings <- read_csv("data/listings.csv", progress = FALSE)
 ```
 
 ```{r}
-listings
+head(listings)
 ```
 
 The columns for the `listings` are:
