@@ -8,4 +8,20 @@ output:
 ---
 
 The Elite: Dangerous Database (EDDB) is a collection of data for the game 
-Elite: Dangerous. 
+Elite: Dangerous. The data is split into several different databases: 
+
+* Prices of goods (listings.csv)
+* Stations (stations.json)
+* Populated Systems (systems_populated.json)
+* Factions (factions,json)
+* Commodities (commodities.json)
+* Modules (modules.json)
+
+This notebook will be an introduction to each data set and provide some 
+exploratory data analysis of the data sets. This EDA will also act as 
+prototypes for the information I will want to display in the Shiny app.
+
+```{r, message = FALSE}
+library(tidyverse)
+```
+
