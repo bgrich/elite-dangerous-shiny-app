@@ -108,4 +108,11 @@ dotted line is the median.
 
 ### Questions 
 
+I want to put together some initial questions to answer using my Shiny app. 
 
+* What is the biggest price difference?
+* What is the distance between the stations with the biggest price difference? 
+* Given a particular commodity, where can I find it and at what price?
+* Given a particular commodity, where can I sell it and at what price?
+* How do the buying and selling price compare the the galatic average (and 
+reported average average and median)?
