@@ -7,6 +7,8 @@ output:
     toc_float: true
 ---
 
+## Introduction
+
 The Elite: Dangerous Database (EDDB) is a collection of data for the game 
 Elite: Dangerous. The data is split into several different databases: 
 
