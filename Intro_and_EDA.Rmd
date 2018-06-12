@@ -128,3 +128,54 @@ stations <- as_tibble(fromJSON("data/stations.json"))
 head(stations)
 ```
 
+The stations data has 39 columns in it, the most relevant of which are the 
+following:
+
+* id: The station's id
+* name: The station's name
+* system_id: The system id where the station resides
+* updated_at: Time at which the data was updated
+* distance_to_star: Distance of the station from the system's star
+* has_ : A set of booleans showing what amenities the station offers
+* is_planetary: A boolean showing whether the station is on a planet
+* selling_ships: A list of the ships being sold
+
+There are also a number of other useful variables showing additional information 
+about the stations.
+
+We can summarize the most relevant columns and get a sense of distributions and 
+any possible NAs.
+
+```{r}
+stations %>% 
+  select(id, system_id, updated_at, distance_to_star, starts_with("has_"), is_planetary) %>% 
+  summary()
+```
+
+We can also extract a list of possible ships that are sold and from that we 
+can determine what stations sell which ships.
+
+```{r}
+stations %>% 
+  select(selling_ships) %>% 
+  unnest() %>% 
+  distinct()
+```
+
+```{r}
+stations %>% 
+  select(id, name, system_id, selling_ships) %>% 
+  unnest() %>% 
+  filter(selling_ships == "Imperial Cutter") %>% 
+  head()
+```
+
+For instance, we can get a listing of all of the stations that sell the 
+"Imperial Cutter" and what system that station is in. 
+
+### Questions 
+
+* What are the list of purchasable ships?
+* What ship can be bought where?
+* What module can be bought where?
+
