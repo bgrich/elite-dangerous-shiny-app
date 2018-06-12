@@ -23,6 +23,7 @@ prototypes for the information I will want to display in the Shiny app.
 
 ```{r, message = FALSE}
 library(tidyverse)
+library(jsonlite)
 ```
 
 ## Prices
@@ -120,7 +121,7 @@ reported average average and median)?
 ## Stations 
 
 ```{r}
-stations <- as_tibble(jsonlite::fromJSON("data/stations.json"))
+stations <- as_tibble(fromJSON("data/stations.json"))
 ```
 
 ```{r}
