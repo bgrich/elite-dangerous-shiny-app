@@ -181,3 +181,36 @@ For instance, we can get a listing of all of the stations that sell the
 * What ship can be bought where?
 * What module can be bought where?
 
+## Populated Systems
+
+The populated systems data gives information on systems in the universe that 
+are populated.
+
+```{r}
+populated_systems <- as_tibble(fromJSON("data/systems_populated.json"))
+```
+
+```{r}
+head(populated_systems)
+```
+
+Like the stations data, the populated systems data has a large number of 
+columns (29) that are mostly metadata about the systems. Most of the metadata 
+is centered on government types, alleigance, security level, power play info, 
+and factions. The information that will likely be useful for us are the 
+following columns: 
+
+* id: The system's id
+* name: the system's name
+* x, y, z: The coordinates of the system in the universe
+
+First, I want to look at the summary statistics for the coordinates to verify 
+that there are no missing coordinates. It looks like all of the coordinates 
+are present.
+
+```{r}
+populated_systems %>% 
+  select(x, y, z) %>% 
+  summary()
+```
+
