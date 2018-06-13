@@ -258,3 +258,20 @@ I am unlikely to use this data set for this particular project, but it could
 provide additional information if I want to look at specific factions, 
 particularly player created factions.
 
+## Modules
+
+The modules data set gives information on the available modules.
+
+```{r}
+modules <- as_tibble(fromJSON("data/modules.json", flatten = TRUE))
+```
+
+```{r}
+head(modules)
+```
+
+While I am unlikely to use this data set, it does contain some interesting 
+information and could be used to search for a particular type of module or a 
+module that has some certain parameter. That module's id could then be fed 
+into the stations data set to produce where that module can be purchased.
+
