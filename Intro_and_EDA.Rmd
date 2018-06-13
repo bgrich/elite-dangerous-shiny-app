@@ -241,3 +241,20 @@ p
 * Where are the various systems?
 * What powers or factions control each system?
 
+## Factions
+
+The factions data set gives metadata on all of the factions involved in the 
+game.
+
+```{r}
+factions <- as_tibble(fromJSON("data/factions.json"))
+```
+
+```{r}
+head(factions)
+```
+
+I am unlikely to use this data set for this particular project, but it could 
+provide additional information if I want to look at specific factions, 
+particularly player created factions.
+
