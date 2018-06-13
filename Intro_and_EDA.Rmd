@@ -26,6 +26,7 @@ prototypes for the information I will want to display in the Shiny app.
 ```{r, message = FALSE}
 library(tidyverse)
 library(jsonlite)
+library(plotly)
 ```
 
 ## Prices
@@ -213,4 +214,30 @@ populated_systems %>%
   select(x, y, z) %>% 
   summary()
 ```
+
+I can make a 3D scatter plot of the coordinates of the systems and show the 
+color of the controlling power. All of this done with plotly and could be a fun 
+way of showing where a particular system is in comparison to other systems. In 
+this plot I've only included the top 4 controlling powers (based on number of 
+systems controlled). Since I haven't used plotly much, this could be a great 
+opportunity to become more familiar with it.
+
+```{r}
+p <- populated_systems %>%
+  filter(!is.na(power)) %>% 
+  group_by(power) %>%
+  mutate(control_number = n()) %>%
+  ungroup() %>% 
+  mutate(control_number = dense_rank(desc(control_number))) %>% 
+  filter(control_number < 5) %>%
+  plot_ly(x = ~x, y = ~y, z = ~z, color = ~power) %>% 
+  add_markers(opacity = 0.1)
+
+p
+```
+
+### Questions 
+
+* Where are the various systems?
+* What powers or factions control each system?
 
