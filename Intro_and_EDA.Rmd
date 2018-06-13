@@ -275,3 +275,19 @@ information and could be used to search for a particular type of module or a
 module that has some certain parameter. That module's id could then be fed 
 into the stations data set to produce where that module can be purchased.
 
+## Commodities
+
+The commodities data set gives information on all of the commodities that are 
+available to purchase (seen in the listings data set).
+
+```{r}
+commodities <- as_tibble(fromJSON("data/commodities.json", flatten = TRUE))
+```
+
+```{r}
+head(commodities)
+```
+
+This data set could be useful for producing more comparative information about 
+the commodities. Particularly things like max and min buy and sell prices 
+could be used for planning out trading runs.
